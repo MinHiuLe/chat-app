@@ -21,8 +21,8 @@
     }
   ],
   "env": {
-    "MONGO_URI": "@mongo_uri",
-    "JWT_SECRET": "@jwt_secret",
-    "FRONTEND_URL": "https://your-app.vercel.app"
+    "MONGO_URI": "",
+    "JWT_SECRET": "",
+    "FRONTEND_URL": ""
   }
 }
