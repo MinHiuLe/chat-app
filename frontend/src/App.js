@@ -54,14 +54,15 @@ const ChatArea = React.memo(({ selectedUser, currentUserId, users, socket, onlin
 
   useEffect(() => {
     if (!socket) return;
-
-    const handleNewMessage = (msg) => {
+      const handleNewMessage = (msg) => {
       const selectedUserId = users.find(u => u.username === selectedUser)?._id;
-      if (
-        (msg.senderId === selectedUserId && msg.receiverId === currentUserId) ||
-        (msg.receiverId === selectedUserId && msg.senderId === currentUserId)
-      ) {
-        dispatch({ type: 'ADD_MESSAGE', payload: msg });
+      if (msg.senderId !== currentUserId) {
+        if (
+          (msg.senderId === selectedUserId && msg.receiverId === currentUserId) ||
+          (msg.receiverId === selectedUserId && msg.senderId === currentUserId)
+        ) {
+          dispatch({ type: 'ADD_MESSAGE', payload: msg });
+        }
       }
     };
 
